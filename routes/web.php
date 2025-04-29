@@ -54,6 +54,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
     Route::post('/users/{id}/update', [userController::class, 'update'])->name('users.update');
     Route::delete('/users/{id}/delete', [UserController::class, 'destroy'])->name('users.destroy');
+
+    //Search Route
+
+    Route::get('search',[PermissionController::class,'search'])->name('search');
     
 });
 

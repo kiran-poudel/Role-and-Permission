@@ -99,4 +99,17 @@ class PermissionController extends Controller implements HasMiddleware
         session()->flash("success", "Permission deleted successfully");
         return redirect()->route('permissions.list');
     }
+
+    public function search(Request $request)
+    {
+
+        $search = $request->search;
+
+        $permissions = Permission::where(function ($query) use ($search) {
+            $query->where('name', 'like', '%' . $search . '%');
+        })->paginate(10);
+
+        return view("permissions.list", compact("search", "permissions"));
+
+    }
 }

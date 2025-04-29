@@ -4,8 +4,13 @@
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                 {{ __('Permissions') }}
             </h2>
+            <form action="{{ route('search') }}" method="get">
+                <input type="text" placeholder="Search" name="search" value="{{@$search}}" class="rounded-md">
+                <button class="bg-slate-700 text-white rounded-md px-2 py-2 text-sm">search</button>
+            </form>
+
             @can('Create permission')
-                <a class="bg-green-700 text-sm rounded-md text-white px-3 py-2 hover:bg-green-500"
+                <a class="bg-green-700 text-sm rounded-md text-white px-3 py-3 hover:bg-green-500"
                     href="{{route('permissions.create')}}">Create</a>
             @endcan
         </div>
